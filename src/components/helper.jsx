@@ -31,14 +31,14 @@ const renderApp = (app) => {
           initialContent={process.env ? devCss : prodCss}
           style={{ height: '100%', width: '100%' }}
         >
-          <Suspense fallback={<h1>Couldnt load port</h1>}>
+          <Suspense fallback={<center><h1>Loading portfolio</h1></center>}>
             <Portfolio insideBigSur />
           </Suspense>
         </Frame>
       );
     case 'vscode':
       return (
-        <Suspense fallback={<h1>Couldnt load vscode</h1>}>
+        <Suspense fallback={<center><h1>Loading vscode</h1></center>}>
           <VSCode />
         </Suspense>
       );
