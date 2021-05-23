@@ -7,8 +7,8 @@ module.exports = () => ({
       name: 'PORTFOLIO',
       filename: 'remoteEntry.js',
       remotes: {
-        PORTFOLIO: 'PORTFOLIO@http://strek.netlify.app/remoteEntry.js',
-        VSCODE: 'VSCODE@http://vsclone.netlify.app/remoteEntry.js',
+        PORTFOLIO: 'PORTFOLIO@https://strek.netlify.app/remoteEntry.js',
+        VSCODE: 'VSCODE@https://vsclone.netlify.app/remoteEntry.js',
       },
       shared: [{ react: { singleton: true } }],
     }),
