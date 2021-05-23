@@ -9,12 +9,12 @@ import renderApp from './helper';
 const AppWindowWrapper = styled.div`
   height: 100%;
   width: 100%;
-  background-color: white;
   border-radius: 12px;
 `;
 const MFEHolder = styled.div`
-height :inherit;
-
+  ${(props) => (props.app === 'vscode'
+    ? 'height : calc(100% - 50px);'
+    : 'height : calc(100% - 25px);')}
 `;
 
 const AppWindows = () => {
@@ -99,7 +99,12 @@ const AppWindows = () => {
           }}
           minWidth="500px"
           minHeight="400px"
-          style={{ borderRadius: '12px', overflow: 'auto ', background: 'white',overflowX :'hidden' }}
+          style={{
+            borderRadius: '12px',
+            overflow: 'hidden',
+            background: 'white',
+            overflowX: 'hidden',
+          }}
           bounds="parent"
           dragHandleClassName="draggable-tool-bar"
           onClick={() => setActive(app)}
@@ -110,10 +115,7 @@ const AppWindows = () => {
               className="draggable-tool-bar"
               maximize={maximize}
             />
-            <MFEHolder>
-            {renderApp(app)}
-            </MFEHolder>
-
+            <MFEHolder app={app}>{renderApp(app)}</MFEHolder>
           </AppWindowWrapper>
         </Rnd>
         ),

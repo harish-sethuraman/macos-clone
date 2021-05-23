@@ -3,9 +3,11 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const { merge } = require('webpack-merge');
 
-module.exports = (env) => ({
+const configImport = (mode) => require(`./configs/webpack.${mode}`)(mode);
+
+const commonConfig = (env) => ({
   mode: 'development',
   entry: './src/index.jsx',
   module: {
@@ -28,15 +30,6 @@ module.exports = (env) => ({
     ],
   },
   plugins: [
-    new ModuleFederationPlugin({
-      name: 'PORTFOLIO',
-      filename: 'remoteEntry.js',
-      remotes: {
-        PORTFOLIO: 'PORTFOLIO@http://localhost:8080/remoteEntry.js',
-        VSCODE: 'VSCODE@http://localhost:1235/remoteEntry.js',
-      },
-      shared: [{ react: { singleton: true } }],
-    }),
     new CopyWebpackPlugin({
       patterns: [
         'src/public/_redirects',
@@ -65,3 +58,5 @@ module.exports = (env) => ({
     },
   },
 });
+
+module.exports = (env, { mode }) => merge(commonConfig(env), configImport(mode));

@@ -11,20 +11,20 @@ const renderApp = (app) => {
     case 'app':
       return <h1>{app}</h1>;
     case 'finder':
-      console.log('process', process.env);
       // eslint-disable-next-line no-case-declarations
       const devCss = `<!DOCTYPE html>
       <html>
       <head>
-      <link rel="stylesheet" type="text/css" href="http://localhost:8080/src_main_css.css">
-      <link rel="stylesheet" type="text/css" href="http://localhost:8080/src_css_style_css.css">
+      <link rel="stylesheet" type="text/css" href="http://localhost:8080/portfolio.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
       </head><body><div></div></body></html>`;
 
       // eslint-disable-next-line no-case-declarations
       const prodCss = `<!DOCTYPE html>
       <html>
       <head>
-      <link rel="stylesheet" type="text/css" href="http://localhost:8080/src_components_app_index_js-webpack_sharing_consume_default_react_react-webpack_sharing_consu-dbe809.css">
+      <link rel="stylesheet" type="text/css" href="https://strek.netlify.app/portfolio.css">
       </head><body><div></div></body></html>`;
       return (
         <Frame
