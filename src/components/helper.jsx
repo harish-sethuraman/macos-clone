@@ -63,12 +63,22 @@ const renderApp = (app) => {
       <html>
       <head>
       <link rel="stylesheet" type="text/css" href="http://localhost:8081/styles.css">
+      <style>
+      .frame-content{
+        width : 100vw;
+      }
+      </style>
       </head><body><div></div></body></html>`;
 
       // eslint-disable-next-line no-case-declarations
       prodCss = `<!DOCTYPE html>
       <html>
       <head>
+      <style>
+      .frame-content{
+        width : 100vw;
+      }
+      </style>
       <link rel="stylesheet" type="text/css" href="https://strek-insta.netlify.app/styles.css">
       </head><body><div></div></body></html>`;
       return (
