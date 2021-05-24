@@ -1,44 +1,12 @@
-import React, { useRef } from "react";
-import styled from "styled-components";
-import useRaf from "@rooks/use-raf";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useAtom } from "jotai";
-import { currentApp, openAppList } from "../atoms/index.atom";
-
-import VSCode from "../images/vscode.png";
-import Mail from "../images/mail.png";
-import Safari from "../images/safari.png";
-import Terminal from "../images/iTerm.png";
-import Finder from "../images/finder.png";
-import Git from "../images/git.png";
-import Music from "../images/music.png";
-import Notes from "../images/notes.png";
-import Postman from "../images/postman.png";
-
-const renderImage = (item) => {
-  switch (item) {
-    case "finder":
-      return Finder;
-    case "git":
-      return Git;
-    case "iterm":
-      return Terminal;
-    case "mail":
-      return Mail;
-    case "music":
-      return Music;
-    case "notes":
-      return Notes;
-    case "postman":
-      return Postman;
-    case "safari":
-      return Safari;
-    case "vscode":
-      return VSCode;
-    default:
-      return null;
-  }
-};
+import React, { useRef } from 'react';
+import styled from 'styled-components';
+import useRaf from '@rooks/use-raf';
+import {
+  motion, useMotionValue, useSpring, useTransform,
+} from 'framer-motion';
+import { useAtom } from 'jotai';
+import { currentApp, openAppList } from '../atoms/index.atom';
+import { renderImage } from './renderimage'
 
 const baseWidth = 57.6;
 const distanceLimit = baseWidth * 6;
@@ -56,7 +24,7 @@ const widthOutput = [
   baseWidth,
   baseWidth * 1.1,
   baseWidth * 1.618,
-  baseWidth * 2.618,
+  baseWidth * 2.218,
   baseWidth * 1.618,
   baseWidth * 1.1,
   baseWidth,
@@ -69,7 +37,7 @@ const useDockHoverAnimation = (mouseX, ref) => {
     {
       stiffness: 1300,
       damping: 82,
-    }
+    },
   );
 
   const width = useTransform(widthPX, (w) => `${w / 16}rem`);
@@ -125,14 +93,26 @@ const DockItemWrapper = styled.div`
   }
 `;
 
+const OpenIndicator = styled.div`
+  height: 4px;
+  width: 4px;
+  margin: 0;
+  border-radius: 50%;
+  background-color: hsl(240, 3%, 11%);
+  opacity: ${(props) => (props.isOpen ? '1' : '0')};
+`;
+
 const DockItem = ({ item, mouseX }) => {
-  const [, setActiveApp] = useAtom(currentApp);
+  const [activeApp, setActiveApp] = useAtom(currentApp);
   const [apps, setOpenApps] = useAtom(openAppList);
   const imgRef = useRef();
 
   const { width } = useDockHoverAnimation(mouseX, imgRef);
 
   const openApp = (app) => {
+    if (app === 'git') {
+      window.open('https://github.com/harish-sethuraman');
+    }
     setActiveApp(app);
     setOpenApps({ ...apps, [app]: { ...apps[app], show: true } });
   };
@@ -146,10 +126,15 @@ const DockItem = ({ item, mouseX }) => {
       <IconContent>{item}</IconContent>
       <motion.img
         ref={imgRef}
-        style={{ width, willChange: "width" }}
+        style={{
+          width,
+          willChange: 'width',
+          filter: 'drop-shadow(0px 0px 5px rgb(0,0,0,0.5))',
+        }}
         alt={item}
         src={renderImage(item)}
       />
+      <OpenIndicator isOpen={apps[item].show} />
     </DockItemWrapper>
   );
 };

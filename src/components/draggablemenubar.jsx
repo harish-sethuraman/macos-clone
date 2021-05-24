@@ -5,13 +5,13 @@ import { openAppList, currentApp } from '../atoms/index.atom';
 
 const DraggableMenuWrapper = styled.div`
   width: 100%;
-  height: 25px;
-  background-color: gray;
+  height: 24px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   position :sticky;
   z-index: 99999;
   top: -25px;
+  border: 1px solid #bdbdbd;
 `;
 const Close = styled.div`
   height: 12px;

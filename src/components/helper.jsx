@@ -1,10 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import Frame from 'react-frame-component';
+import InProgress from './inprogress';
 
 // eslint-disable-next-line import/no-unresolved
 const Portfolio = lazy(() => import('PORTFOLIO/Portfolio'));
 // eslint-disable-next-line import/no-unresolved
 const VSCode = lazy(() => import('VSCODE/VSCODE'));
+// eslint-disable-next-line import/no-unresolved
+const Insta = lazy(() => import('INSTA/Insta'));
 
 const renderApp = (app) => {
   switch (app) {
@@ -12,7 +15,7 @@ const renderApp = (app) => {
       return <h1>{app}</h1>;
     case 'finder':
       // eslint-disable-next-line no-case-declarations
-      const devCss = `<!DOCTYPE html>
+      let devCss = `<!DOCTYPE html>
       <html>
       <head>
       <link rel="stylesheet" type="text/css" href="http://localhost:8080/portfolio.css">
@@ -21,7 +24,7 @@ const renderApp = (app) => {
       </head><body><div></div></body></html>`;
 
       // eslint-disable-next-line no-case-declarations
-      const prodCss = `<!DOCTYPE html>
+      let prodCss = `<!DOCTYPE html>
       <html>
       <head>
       <link rel="stylesheet" type="text/css" href="https://strek.netlify.app/portfolio.css">
@@ -31,19 +34,61 @@ const renderApp = (app) => {
           initialContent={process.env ? devCss : prodCss}
           style={{ height: '100%', width: '100%' }}
         >
-          <Suspense fallback={<center><h1>Loading portfolio</h1></center>}>
+          <Suspense
+            fallback={(
+              <center>
+                <h1>Loading portfolio</h1>
+              </center>
+            )}
+          >
             <Portfolio insideBigSur />
           </Suspense>
         </Frame>
       );
     case 'vscode':
       return (
-        <Suspense fallback={<center><h1>Loading vscode</h1></center>}>
+        <Suspense
+          fallback={(
+            <center>
+              <h1>Loading vscode</h1>
+            </center>
+          )}
+        >
           <VSCode />
         </Suspense>
       );
+    case 'insta':
+      // eslint-disable-next-line no-case-declarations
+      devCss = `<!DOCTYPE html>
+      <html>
+      <head>
+      <link rel="stylesheet" type="text/css" href="http://localhost:8081/styles.css">
+      </head><body><div></div></body></html>`;
+
+      // eslint-disable-next-line no-case-declarations
+      prodCss = `<!DOCTYPE html>
+      <html>
+      <head>
+      <link rel="stylesheet" type="text/css" href="https://strek-insta.netlify.app/styles.css">
+      </head><body><div></div></body></html>`;
+      return (
+        <Frame
+          initialContent={process.env ? devCss : prodCss}
+          style={{ height: '100%', width: '100%' }}
+        >
+          <Suspense
+            fallback={(
+              <center>
+                <h1>Loading InstaClone</h1>
+              </center>
+            )}
+          >
+            <Insta insideBigSur />
+          </Suspense>
+        </Frame>
+      );
     default:
-      return <h1>{app}</h1>;
+      return <InProgress app={app} />;
   }
 };
 export default renderApp;

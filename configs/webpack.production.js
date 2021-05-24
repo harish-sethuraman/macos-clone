@@ -9,6 +9,7 @@ module.exports = () => ({
       remotes: {
         PORTFOLIO: 'PORTFOLIO@https://strek.netlify.app/remoteEntry.js',
         VSCODE: 'VSCODE@https://vsclone.netlify.app/remoteEntry.js',
+        INSTA: 'INSTA@https://strek-insta.netlify.app/remoteEntry.js',
       },
       shared: [{ react: { singleton: true } }],
     }),

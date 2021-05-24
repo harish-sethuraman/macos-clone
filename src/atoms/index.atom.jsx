@@ -37,16 +37,21 @@ export const openAppList = atom({
     height: 300,
     width: 400,
   },
-  mail: {
+  insta: {
     show: false,
     height: 300,
     width: 400,
   },
-  music: {
-    show: false,
-    height: 300,
-    width: 400,
-  },
+  // mail: {
+  //   show: false,
+  //   height: 300,
+  //   width: 400,
+  // },
+  // music: {
+  //   show: false,
+  //   height: 300,
+  //   width: 400,
+  // },
   notes: {
     show: false,
     height: 300,
@@ -67,6 +72,7 @@ export const openAppList = atom({
     height: 300,
     width: 400,
   },
+ 
 });
 export const currentApp = atom(null);
 
