@@ -19,6 +19,7 @@ const PageLoader = ({ setChime }) => {
   const chimeRef = useRef();
   useEffect(() => {
     chimeRef.current.addEventListener('ended', () => setChime(true));
+    setTimeout(() => { setChime(true); }, 3000);
   }, []);
   return (
     <PageLoaderWrapper>
