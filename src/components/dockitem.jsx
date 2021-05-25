@@ -6,7 +6,7 @@ import {
 } from 'framer-motion';
 import { useAtom } from 'jotai';
 import { currentApp, openAppList } from '../atoms/index.atom';
-import { renderImage } from './renderimage'
+import { renderImage } from './renderimage';
 
 const baseWidth = 57.6;
 const distanceLimit = baseWidth * 6;
@@ -128,6 +128,7 @@ const DockItem = ({ item, mouseX }) => {
         ref={imgRef}
         style={{
           width,
+          zIndex: 99,
           willChange: 'width',
           filter: 'drop-shadow(0px 0px 5px rgb(0,0,0,0.5))',
         }}

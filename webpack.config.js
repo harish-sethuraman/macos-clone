@@ -5,6 +5,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { merge } = require('webpack-merge');
 
+
 const configImport = (mode) => require(`./configs/webpack.${mode}`)(mode);
 
 const commonConfig = (env) => ({
@@ -13,7 +14,7 @@ const commonConfig = (env) => ({
   module: {
     rules: [
       {
-        test: /\.(jpeg|jpg|png|gif|svg|webp)$/i,
+        test: /\.(jpeg|jpg|png|gif|svg|webp|mp3)$/i,
         loader: 'file-loader',
       },
       {
@@ -33,6 +34,9 @@ const commonConfig = (env) => ({
     new CopyWebpackPlugin({
       patterns: [
         'src/public/_redirects',
+        'src/public/chime.mp3',
+        'src/public/favicon.ico',
+
         // { from: 'data/', to: 'data/' },
       ],
     }),

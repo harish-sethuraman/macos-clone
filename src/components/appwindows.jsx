@@ -100,12 +100,12 @@ const AppWindows = () => {
           minWidth="500px"
           minHeight="400px"
           style={{
-            boxShadow : '0 33px 81px rgb(0 0 0 / 31%)',
+            boxShadow: '0 33px 81px rgb(0 0 0 / 31%)',
             borderRadius: '12px',
             overflow: 'hidden',
             background: 'white',
             overflowX: 'hidden',
-            zIndex : `${activeApp === app ? '9999' : '0'}`
+            zIndex: `${activeApp === app ? '9' : '0'}`,
           }}
           bounds="parent"
           dragHandleClassName="draggable-tool-bar"
