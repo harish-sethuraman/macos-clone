@@ -106,6 +106,7 @@ const AppWindows = () => {
             background: 'white',
             overflowX: 'hidden',
             zIndex: `${activeApp === app ? '9' : '0'}`,
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
           }}
           bounds="parent"
           dragHandleClassName="draggable-tool-bar"
@@ -116,6 +117,7 @@ const AppWindows = () => {
               app={app}
               className="draggable-tool-bar"
               maximize={maximize}
+              windowRef={windowRef}
             />
             <MFEHolder app={app}>{renderApp(app)}</MFEHolder>
           </AppWindowWrapper>
