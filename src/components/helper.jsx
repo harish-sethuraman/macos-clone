@@ -1,104 +1,138 @@
-import React, { lazy, Suspense } from 'react';
-import Frame from 'react-frame-component';
-import InProgress from './inprogress';
+import React, { useEffect, useRef } from 'react';
 
-// eslint-disable-next-line import/no-unresolved
-const Portfolio = lazy(() => import('PORTFOLIO/Portfolio'));
-// eslint-disable-next-line import/no-unresolved
-const VSCode = lazy(() => import('VSCODE/VSCODE'));
-// eslint-disable-next-line import/no-unresolved
-const Insta = lazy(() => import('INSTA/Insta'));
+const fileMenu = (type) => [
+  {
+    name: `New ${type}`,
+    disabled: false,
+  },
+  {
+    name: 'New tab',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Open',
+    disabled: false,
+  },
+  {
+    name: 'Rename',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Compress',
+    disabled: false,
+  },
+  {
+    name: 'Duplicate',
+    disabled: false,
+  },
+  {
+    name: 'Find',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Close Folder',
+    disabled: false,
+  },
+  {
+    name: 'Close Window',
+    disabled: false,
+  },
+];
+const editMenu = (type) => [
+  {
+    name: 'Undo',
+    disabled: false,
+  },
+  {
+    name: 'Redo',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Cut',
+    disabled: false,
+  },
+  {
+    name: 'Copy',
+    disabled: false,
+  },
+  {
+    name: 'Copy As',
+    disabled: false,
+  },
+  {
+    name: 'Paste',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Find',
+    disabled: false,
+  },
+  {
+    name: 'Replace',
+    disabled: false,
+  },
+];
 
-const renderApp = (app) => {
-  switch (app) {
-    case 'app':
-      return <h1>{app}</h1>;
-    case 'finder':
-      // eslint-disable-next-line no-case-declarations
-      let devCss = `<!DOCTYPE html>
-      <html>
-      <head>
-      <link rel="stylesheet" type="text/css" href="http://localhost:8080/portfolio.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-      </head><body><div></div></body></html>`;
+const goMenu = (type) => [
+  {
+    name: 'Back',
+    disabled: false,
+  },
+  {
+    name: 'Forward',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Go to File',
+    disabled: false,
+  },
+  {
+    name: 'Go to Location',
+    disabled: false,
+  },
+  {
+    name: 'Go to Line/Column',
+    disabled: false,
+    break: true,
+  },
+  {
+    name: 'Next Problem',
+    disabled: false,
+  },
+  {
+    name: 'Previous Problem',
+    disabled: false,
+  },
+];
 
-      // eslint-disable-next-line no-case-declarations
-      let prodCss = `<!DOCTYPE html>
-      <html>
-      <head>
-      <link rel="stylesheet" type="text/css" href="https://strek.netlify.app/portfolio.css">
-      </head><body><div></div></body></html>`;
-      return (
-        <Frame
-          initialContent={process.env ? devCss : prodCss}
-          style={{ height: '100%', width: '100%' }}
-        >
-          <Suspense
-            fallback={(
-              <center>
-                <h1>Loading portfolio</h1>
-              </center>
-            )}
-          >
-            <Portfolio insideBigSur />
-          </Suspense>
-        </Frame>
-      );
-    case 'vscode':
-      return (
-        <Suspense
-          fallback={(
-            <center>
-              <h1>Loading vscode</h1>
-            </center>
-          )}
-        >
-          <VSCode />
-        </Suspense>
-      );
-    case 'insta':
-      // eslint-disable-next-line no-case-declarations
-      devCss = `<!DOCTYPE html>
-      <html>
-      <head>
-      <link rel="stylesheet" type="text/css" href="http://localhost:8081/styles.css">
-      <style>
-      .frame-content{
-        width : 100vw;
-      }
-      </style>
-      </head><body><div></div></body></html>`;
+export const menuLists = (type) => [
+  { name: 'file', options: fileMenu(type) },
+  { name: 'edit', options: editMenu(type) },
+  { name: 'go', options: goMenu(type) },
+];
 
-      // eslint-disable-next-line no-case-declarations
-      prodCss = `<!DOCTYPE html>
-      <html>
-      <head>
-      <style>
-      .frame-content{
-        width : 100vw;
-      }
-      </style>
-      <link rel="stylesheet" type="text/css" href="https://strek-insta.netlify.app/styles.css">
-      </head><body><div></div></body></html>`;
-      return (
-        <Frame
-          initialContent={process.env ? devCss : prodCss}
-          style={{ height: '100%', width: '100%' }}
-        >
-          <Suspense
-            fallback={(
-              <center>
-                <h1>Loading InstaClone</h1>
-              </center>
-            )}
-          >
-            <Insta insideBigSur />
-          </Suspense>
-        </Frame>
-      );
-    default:
-      return <InProgress app={app} />;
+export function useOutsideClick(ref, callback) {
+  const cachedCallback = useRef(() => {});
+
+  useEffect(() => {
+    cachedCallback.current = callback;
+  });
+
+  function handleClick(e) {
+    if (!ref.current?.contains(e.target)) cachedCallback.current?.();
   }
-};
-export default renderApp;
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
+  }, []);
+}

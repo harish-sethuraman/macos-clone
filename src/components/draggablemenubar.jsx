@@ -53,18 +53,18 @@ const DraggableMenuBar = ({
     windowRef.current.resizableElement.current.style.transition = 'clip-path ease-in 0.3s , transform ease-in 0.3s',
 
     windowRef.current.resizableElement.current.style.clipPath = 'polygon(0 0, 100% 0, 78% 100%, 31% 100%)';
-    windowRef.current.resizableElement.current.style.transform = windowRef.current.resizableElement.current.style.transform +'scale(1)'
+    windowRef.current.resizableElement.current.style.transform = `${windowRef.current.resizableElement.current.style.transform}scale(1)`;
 
     setTimeout(
       () => {
         windowRef.current.resizableElement.current.style.clipPath = 'polygon(31% 0, 79% 0, 78% 100%, 31% 100%)';
-        windowRef.current.resizableElement.current.style.transform = windowRef.current.resizableElement.current.style.transform+'translateY(50vh) scale(0.7)';
+        windowRef.current.resizableElement.current.style.transform = `${windowRef.current.resizableElement.current.style.transform}translateY(50vh) scale(0.7)`;
       },
       300,
     );
     setTimeout(
       () => {
-        windowRef.current.resizableElement.current.style.transform = windowRef.current.resizableElement.current.style.transform+'translateY(100vh) scale(0.2)'
+        windowRef.current.resizableElement.current.style.transform = `${windowRef.current.resizableElement.current.style.transform}translateY(100vh) scale(0.2)`;
       },
       602,
     );

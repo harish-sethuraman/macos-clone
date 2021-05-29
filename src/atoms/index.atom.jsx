@@ -77,3 +77,6 @@ export const openAppList = atom({
 export const currentApp = atom(null);
 
 export const desktopMode = atom(false);
+
+
+export const menuAtom = atom(false);

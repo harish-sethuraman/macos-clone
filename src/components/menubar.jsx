@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { AppleIcon, ControlCenterIcon } from 'Icons/icons';
 import { useAtom } from 'jotai';
 import TimeAndDate from './timeanddate';
-import { currentApp } from '../atoms/index.atom';
+import { currentApp, menuAtom } from '../atoms/index.atom';
 import ControlCenterMenu from './controlcentermenu';
+import Menu from './menu';
+import { menuLists, useOutsideClick } from './helper';
 
 const MenuBarWrapper = styled.div`
   display: flex;
@@ -35,17 +37,30 @@ const ControlCenter = styled.span`
   width: 16px;
 `;
 
+const MenuWrapper = styled.div`
+  display: flex;
+  width: 200px;
+`;
+
 const MenuBar = () => {
   const [activeApp] = useAtom(currentApp);
-  const [showMenu, toggleMenu] = useState(false);
 
+  const [showMenu, toggleMenu] = useState(false);
+  const menuRef = useRef();
+  const [, setActiveMenu] = useAtom(menuAtom);
+
+  useOutsideClick(menuRef, () => setActiveMenu(''));
   return (
     <MenuBarWrapper id="menu">
       <LeftMenu>
         <AppleIcon />
-        <Text>{activeApp}</Text>
-        <Text>{activeApp}</Text>
-        <Text>{activeApp}</Text>
+        {activeApp && (
+          <MenuWrapper ref={menuRef}>
+            {menuLists(activeApp).map((options) => (
+              <Menu activeApp={activeApp} options={options} />
+            ))}
+          </MenuWrapper>
+        )}
       </LeftMenu>
       <RightMenu>
         <ControlCenter onClick={() => toggleMenu(!showMenu)}>
