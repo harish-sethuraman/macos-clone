@@ -46,7 +46,7 @@ const DraggableAppWindow = ({ app }) => {
     const { x: windowLeft, y: windowTop } = extractPositionFromTransformStyle(
       windowRef.current.resizableElement.current.style.transform,
     );
-    windowRef.current.resizableElement.current.style.transition = 'height 0.3s ease, width 0.3s ease, transform 0.3s ease';
+    windowRef.current.resizableElement.current.style.transition += 'height 0.7s ease, width 0.7s ease, transform 0.3s ease';
 
     clearTimeout(transitionClearanceRef);
 
