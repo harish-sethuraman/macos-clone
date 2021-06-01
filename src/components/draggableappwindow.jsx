@@ -99,9 +99,7 @@ const DraggableAppWindow = ({ app }) => {
       style={{
         boxShadow: '0 33px 81px rgb(0 0 0 / 31%)',
         borderRadius: '12px',
-        overflow: 'hidden',
         background: 'white',
-        overflowX: 'hidden',
         zIndex: `${activeApp === app ? '9' : '0'}`,
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
       }}

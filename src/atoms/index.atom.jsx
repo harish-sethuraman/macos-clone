@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
-
 import { createGlobalStyle } from 'styled-components';
+import CascadiaCode from './CascadiaCode.woff2';
 
 export const themes = {
   dark: {
@@ -19,6 +19,15 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
 }
+@font-face {
+        font-family:"'Cascadia Code',Menlo, Monaco, 'Courier New', monospace";
+        src: local("'Cascadia Code',Menlo, Monaco, 'Courier New', monospace"), local("'Cascadia Code',Menlo, Monaco, 'Courier New', monospace"),
+        url(${CascadiaCode}) format('woff2'),
+        url(${CascadiaCode}) format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+
 `;
 
 export const openAppList = atom({
@@ -72,11 +81,9 @@ export const openAppList = atom({
     height: 300,
     width: 400,
   },
- 
 });
 export const currentApp = atom(null);
 
 export const desktopMode = atom(false);
-
 
 export const menuAtom = atom(false);

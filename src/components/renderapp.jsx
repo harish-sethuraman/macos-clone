@@ -8,6 +8,9 @@ const Portfolio = lazy(() => import('PORTFOLIO/Portfolio'));
 const VSCode = lazy(() => import('VSCODE/VSCODE'));
 // eslint-disable-next-line import/no-unresolved
 const Insta = lazy(() => import('INSTA/Insta'));
+// eslint-disable-next-line import/no-unresolved
+const Iterm = lazy(() => import('ITERM/Iterm'));
+
 
 const renderApp = (app) => {
   switch (app) {
@@ -98,6 +101,18 @@ const renderApp = (app) => {
             <Insta insideBigSur />
           </Suspense>
         </Frame>
+      );
+    case 'iterm':
+      return (
+        <Suspense
+          fallback={(
+            <center>
+              <h1>Loading Iterm</h1>
+            </center>
+          )}
+        >
+          <Iterm />
+        </Suspense>
       );
     default:
       return <InProgress app={app} />;

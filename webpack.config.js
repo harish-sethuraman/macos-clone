@@ -14,7 +14,7 @@ const commonConfig = (env) => ({
   module: {
     rules: [
       {
-        test: /\.(jpeg|jpg|png|gif|svg|webp|mp3)$/i,
+        test: /\.(jpeg|jpg|png|gif|svg|webp|mp3|woff2)$/i,
         loader: 'file-loader',
       },
       {
