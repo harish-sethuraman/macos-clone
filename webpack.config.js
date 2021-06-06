@@ -36,7 +36,7 @@ const commonConfig = (env) => ({
         'src/public/_redirects',
         'src/public/chime.mp3',
         'src/public/favicon.ico',
-
+        'src/public/robots.txt',
         // { from: 'data/', to: 'data/' },
       ],
     }),
