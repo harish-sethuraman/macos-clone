@@ -5,6 +5,8 @@ import { menuAtom } from '../atoms/index.atom';
 
 const Menu = styled.div`
   text-transform: capitalize;
+  font-size: 12.8px;
+  font-weight: 500;
 `;
 
 const MenuContents = styled.ul`
@@ -23,11 +25,12 @@ const MenuContent = styled.li`
   padding: 5px 10px;
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue",
     "Helvetica", "Arial", sans-serif;
-    color : hsla(240,3%,11%);
+  color: hsla(240, 3%, 11%);
   ${(props) => props.break && 'border-bottom : 1px solid hsla(240,3%,11%,0.3); '}
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
   min-width: 100px;
+  transition: 0.3s background, 0.3s color;
 
   &:hover {
     background-color: #007bff;
@@ -41,9 +44,11 @@ const MenuContainer = styled.div`
   flex-direction: space-between;
   width: 100%;
   justify-content: center;
-  padding :0px 10px;
+  margin: 0px 0px;
   ${(props) => props.active && ' background:hsla(240, 24%, 100%, 0.3)'};
-  border-radius : 3px;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  cursor: pointer;
 `;
 const MenuWrapper = ({ type, currentApp, options }) => {
   const [activeMenu, setActiveMenu] = useAtom(menuAtom);
@@ -58,7 +63,9 @@ const MenuWrapper = ({ type, currentApp, options }) => {
       {activeMenu === options.name && (
         <MenuContents>
           {options.options.map((option) => (
-            <MenuContent break={option.break}>{option.name}</MenuContent>
+            <MenuContent break={option.break} key={option.name}>
+              {option.name}
+            </MenuContent>
           ))}
         </MenuContents>
       )}

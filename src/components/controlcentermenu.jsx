@@ -1,20 +1,20 @@
-import { useAtom } from "jotai";
-import React from "react";
-import styled from "styled-components";
+import { useAtom } from 'jotai';
+import React from 'react';
+import styled from 'styled-components';
 import {
   AirdropIcon,
   BluetoothIcon,
   KeyboardIcon,
   MoonIcon,
   WifiIcon,
-} from "../icons/icons";
-import { desktopMode } from "../atoms/index.atom";
+} from '../icons/icons';
+import { desktopMode } from '../atoms/index.atom';
 
 const ControlCenterWrapper = styled.div`
   margin-top: 4.5px;
   right: 30px;
   width: auto;
-  background: hsla(240, 24%, 100%, 0.4);
+  background: hsla(240, 24%, 100%, 0.6);
   position: absolute;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 0 11px 0,
@@ -25,10 +25,10 @@ const IconButton = styled.button`
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background: ${(props) =>
-    props.dark ? "hsla( 240,3%,11%,0.1)" : "hsla(211, 100%, 50%)"};
+  background: ${(props) => (props.dark ? 'hsla( 240,3%,11%,0.1)' : 'hsla(211, 100%, 50%)')};
   border: 0;
-  fill: ${(props) => (props.dark ? "#000" : "white")};
+  fill: ${(props) => (props.dark ? '#000' : 'white')};
+  transition : 0.3s background ease , 0.3s color ease;
 `;
 
 const BackgroundWrapper = styled.div`

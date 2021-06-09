@@ -15,7 +15,7 @@ export const themes = {
 
 export const GlobalStyle = createGlobalStyle`
 * {
-  font-family : Source Sans Pro,sans-serif;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica','Arial', sans-serif;
   margin: 0;
   padding: 0;
 }

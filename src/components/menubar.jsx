@@ -25,6 +25,11 @@ const RightMenu = styled.div`
   display: flex;
   align-items: center;
 `;
+const AppName = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+`;
 const Text = styled.p`
   padding: 1px 10px;
   text-transform: capitalize;
@@ -40,6 +45,7 @@ const ControlCenter = styled.span`
 const MenuWrapper = styled.div`
   display: flex;
   width: 200px;
+  margin-left: 10px;
 `;
 
 const MenuBar = () => {
@@ -54,10 +60,15 @@ const MenuBar = () => {
     <MenuBarWrapper id="menu">
       <LeftMenu>
         <AppleIcon />
+        <AppName>{activeApp}</AppName>
         {activeApp && (
           <MenuWrapper ref={menuRef}>
             {menuLists(activeApp).map((options) => (
-              <Menu activeApp={activeApp} options={options} />
+              <Menu
+                activeApp={activeApp}
+                key={options.name}
+                options={options}
+              />
             ))}
           </MenuWrapper>
         )}

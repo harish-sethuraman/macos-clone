@@ -9,7 +9,7 @@ const AppWindows = () => {
   return (
     <>
       {Object.keys(openApps).map(
-        (app) => openApps[app].show && <DraggableAppWindow app={app} />,
+        (app) => openApps[app].show && <DraggableAppWindow key={app} app={app} />,
       )}
     </>
   );

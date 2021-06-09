@@ -71,7 +71,6 @@ padding: 0.5rem 0.75rem;
 border-radius: 0.375rem;
 box-shadow: hsla(0deg, 0%, 0%, 30%) 0px 1px 5px 2px, 0 0 0 0 white);
 color:  hsl(0, 0%, 11%);
-font-family:  -apple-system, BlinkMacSystemFont, 'Inter', 'Helvetica Neue', 'Helvetica','Arial', sans-serif;
 justify-content:center;
 display: none;
 width : fit-content;
@@ -98,7 +97,7 @@ const OpenIndicator = styled.div`
   width: 4px;
   margin: 0;
   border-radius: 50%;
-  background-color: hsl(240, 3%, 11%);
+  background-color: white;
   opacity: ${(props) => (props.isOpen ? '1' : '0')};
 `;
 
@@ -111,7 +110,7 @@ const DockItem = ({ item, mouseX }) => {
 
   const openApp = (app) => {
     if (app === 'git') {
-      window.open('https://github.com/harish-sethuraman');
+      window.open('https://github.com/harish-sethuraman/macos-clone');
     }
     setActiveApp(app);
     setOpenApps({ ...apps, [app]: { ...apps[app], show: true } });

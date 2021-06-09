@@ -11,7 +11,6 @@ const Insta = lazy(() => import('INSTA/Insta'));
 // eslint-disable-next-line import/no-unresolved
 const Iterm = lazy(() => import('ITERM/Iterm'));
 
-
 const renderApp = (app) => {
   switch (app) {
     case 'app':
@@ -37,7 +36,7 @@ const renderApp = (app) => {
       return (
         <Frame
           initialContent={process.env ? devCss : prodCss}
-          style={{ height: '100%', width: '100%' }}
+          style={{ height: '100%', width: '100%', border: 'none' }}
         >
           <Suspense
             fallback={(
@@ -89,7 +88,7 @@ const renderApp = (app) => {
       return (
         <Frame
           initialContent={process.env ? devCss : prodCss}
-          style={{ height: '100%', width: '100%' }}
+          style={{ height: '100%', width: '100%', border: 'none' }}
         >
           <Suspense
             fallback={(
