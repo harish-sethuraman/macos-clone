@@ -18,8 +18,9 @@ const Icon = styled.div`
 const PageLoader = ({ setChime }) => {
   const chimeRef = useRef();
   useEffect(() => {
+    const timeout = setTimeout(() => { setChime(true); }, 3000);
+    chimeRef.current.addEventListener('started', () => clearTimeout(timeout));
     chimeRef.current.addEventListener('ended', () => setChime(true));
-    setTimeout(() => { setChime(true); }, 3000);
   }, []);
   return (
     <PageLoaderWrapper>

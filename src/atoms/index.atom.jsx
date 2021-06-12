@@ -31,11 +31,13 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const openAppList = atom({
-  finder: {
-    show: false,
-    height: 300,
-    width: 400,
-  },
+  ...(window.location === window.parent.location && {
+    finder: {
+      show: true,
+      height: window.innerHeight - 75 - 25,
+      width: window.innerWidth,
+    },
+  }),
   git: {
     show: false,
     height: 300,
@@ -82,7 +84,7 @@ export const openAppList = atom({
     width: 400,
   },
 });
-export const currentApp = atom(null);
+export const currentApp = atom(window.location === window.parent.location ? 'finder' : null);
 
 export const desktopMode = atom(false);
 

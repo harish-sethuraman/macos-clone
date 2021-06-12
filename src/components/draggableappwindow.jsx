@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useAtom } from 'jotai';
 import DraggableMenuBar from './draggablemenubar';
 import renderApp from './renderapp';
-import { currentApp } from '../atoms/index.atom';
+import { currentApp, openAppList } from '../atoms/index.atom';
 
 const AppWindowWrapper = styled.div`
   height: 100%;
@@ -76,6 +76,8 @@ const DraggableAppWindow = ({ app }) => {
     }
   };
   const [activeApp, setActiveApp] = useAtom(currentApp);
+  const [openApps, setOpenApps] = useAtom(openAppList);
+
   const windowRef = useRef();
 
   const setActive = (app) => {
@@ -89,8 +91,8 @@ const DraggableAppWindow = ({ app }) => {
       ref={windowRef}
       key={app}
       default={{
-        width: 300,
-        height: 400,
+        width: openApps[app].width,
+        height: openApps[app].height,
         x: 0,
         y: 0,
       }}

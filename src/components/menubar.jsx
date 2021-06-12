@@ -33,7 +33,6 @@ const AppName = styled.div`
 const Text = styled.p`
   padding: 1px 10px;
   text-transform: capitalize;
-  font-weight: 500 !important;
   font-size: 14px;
 `;
 
