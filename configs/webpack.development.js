@@ -12,7 +12,12 @@ module.exports = () => ({
         INSTA: 'INSTA@http://localhost:8081/remoteEntry.js',
         ITERM: 'ITERM@http://localhost:1236/remoteEntry.js',
       },
-      shared: [{ react: { singleton: true } }],
+      shared: [{
+        react: {
+          requiredVersion: '^17.0.2',
+          singleton: true,
+        },
+      }],
     }),
   ],
 });
