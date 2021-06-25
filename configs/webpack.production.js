@@ -12,7 +12,12 @@ module.exports = () => ({
         INSTA: 'INSTA@https://strek-insta.netlify.app/remoteEntry.js',
         ITERM: 'ITERM@https://terminal-clone.netlify.app/remoteEntry.js',
       },
-      shared: [{ react: { singleton: true } }],
+      shared: [{
+        react: {
+          requiredVersion: '^17.0.2',
+          singleton: true,
+        },
+      }],
     }),
   ],
 });
