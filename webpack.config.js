@@ -5,11 +5,14 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { merge } = require('webpack-merge');
 
-
 const configImport = (mode) => require(`./configs/webpack.${mode}`)(mode);
 
 const commonConfig = (env) => ({
   mode: 'development',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+  },
   entry: './src/index.jsx',
   module: {
     rules: [
