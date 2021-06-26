@@ -40,7 +40,7 @@ const commonConfig = (env) => ({
         'src/public/chime.mp3',
         'src/public/favicon.ico',
         'src/public/robots.txt',
-        // { from: 'data/', to: 'data/' },
+        { from: 'datas/', to: 'datas/' },
       ],
     }),
     new MiniCssExtractPlugin({
