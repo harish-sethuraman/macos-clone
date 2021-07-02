@@ -1,13 +1,13 @@
-import Mail from '../images/mail.png';
-import Safari from '../images/safari.png';
-import Terminal from '../images/iTerm.png';
-import Finder from '../images/finder.png';
-import Git from '../images/git.png';
-import Music from '../images/music.png';
-import Notes from '../images/notes.png';
-import Postman from '../images/postman.png';
-import VSCode from '../images/vscode.png';
-import Insta from '../images/insta.png';
+import Mail from '../images/mail.webp';
+import Safari from '../images/safari.webp';
+import Terminal from '../images/iTerm.webp';
+import Finder from '../images/finder.webp';
+import Git from '../images/git.webp';
+import Music from '../images/music.webp';
+import Notes from '../images/notes.webp';
+import Postman from '../images/postman.webp';
+import VSCode from '../images/vscode.webp';
+import Insta from '../images/insta.webp';
 
 const renderImage = (item) => {
   switch (item) {

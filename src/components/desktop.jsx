@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import Mountains from "Images/bg.jpeg";
-import Dock from "./dock";
-import MenuBar from "./menubar";
-import AppWindows from "./appwindows";
-
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Mountains from 'Images/bg.webp';
+import Dock from './dock';
+import MenuBar from './menubar';
+import AppWindows from './appwindows';
 
 const DesktopWrapper = styled.div`
   display: flex;

@@ -2,6 +2,9 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 
 module.exports = () => ({
   mode: 'production',
+  output : {
+    filename : "macos.[id].js"
+  },
   plugins: [
     new ModuleFederationPlugin({
       name: 'PORTFOLIO',
