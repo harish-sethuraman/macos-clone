@@ -35,6 +35,7 @@ const renderApp = (app) => {
       </head><body><div></div></body></html>`;
       return (
         <Frame
+          className="portfolio-frame"
           initialContent={process.env ? devCss : prodCss}
           style={{ height: '100%', width: '100%', border: 'none' }}
         >
