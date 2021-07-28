@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <ThemeProvider theme={themes.dark}>
       <GlobalStyle />
-      {!chime && <PageLoader setChime={setChime} />}
+      {/* {!chime && <PageLoader setChime={setChime} />} */}
       <Desktop />
     </ThemeProvider>
   );
