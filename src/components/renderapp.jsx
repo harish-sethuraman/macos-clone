@@ -23,6 +23,9 @@ const renderApp = (app) => {
       <link rel="stylesheet" type="text/css" href="http://localhost:8080/portfolio.css">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <style>
+      html::-webkit-scrollbar{
+        display:none;}</style>
       </head><body><div></div></body></html>`;
 
       // eslint-disable-next-line no-case-declarations
@@ -32,6 +35,9 @@ const renderApp = (app) => {
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="https://strek.netlify.app/portfolio.css">
+      <style>
+      html::-webkit-scrollbar{
+        display:none;}</style>
       </head><body><div></div></body></html>`;
       return (
         <Frame

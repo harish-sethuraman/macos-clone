@@ -19,6 +19,9 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
 }
+html{
+overflow: hidden;
+}
 @font-face {
         font-family:"'Cascadia Code',Menlo, Monaco, 'Courier New', monospace";
         src: local("'Cascadia Code',Menlo, Monaco, 'Courier New', monospace"), local("'Cascadia Code',Menlo, Monaco, 'Courier New', monospace"),
