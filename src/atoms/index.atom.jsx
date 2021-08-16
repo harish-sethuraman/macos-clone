@@ -37,7 +37,7 @@ export const openAppList = atom({
   ...(window.location === window.parent.location && {
     finder: {
       show: true,
-      height: window.innerHeight - 75 - 25,
+      height: window.innerHeight - 75 - 25 - 10,
       width: window.innerWidth,
     },
   }),
