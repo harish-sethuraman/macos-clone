@@ -60,9 +60,36 @@ const renderApp = (app) => {
       return (
         <Suspense
           fallback={(
-            <center>
-              <h1>Loading vscode</h1>
-            </center>
+            <div className="vscodeloader">
+              <div className="content">
+                <div className="leftnav">
+                  <div className="navitem" />
+                  <div className="navitem" />
+                  <div className="navitem" />
+                  <div className="navitem" />
+                  <div className="navitem" />
+                </div>
+                <div className="codearea">
+                  <div className="loading" />
+                  <div className="text">Loading</div>
+                </div>
+              </div>
+              <div className="bottombar">
+                <div className="leftside">
+                  <div className="icons" />
+                  <div className="icons" />
+                  <div className="icons" />
+                  <div className="icons" />
+                </div>
+                <div className="rightside">
+                  <div className="icons" />
+                  <div className="icons" />
+                  <div className="icons" />
+                  <div className="icons" />
+                  <div className="icons" />
+                </div>
+              </div>
+            </div>
           )}
         >
           <VSCode />

@@ -14,7 +14,7 @@ const AppWindowWrapper = styled.div`
 
 const MFEHolder = styled.div`
   ${(props) => (props.app === 'vscode'
-    ? 'height : calc(100% - 50px);'
+    ? 'height : calc(100% - 25px);'
     : 'height : calc(100% - 25px);')}
 `;
 
