@@ -1,8 +1,13 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = () => ({
   mode: 'development',
   plugins: [
+    new HtmlWebPackPlugin({
+      title: 'Harish Kumar',
+      template: 'src/public/dev.html',
+    }),
     new ModuleFederationPlugin({
       name: 'PORTFOLIO',
       filename: 'remoteEntry.js',
@@ -12,12 +17,14 @@ module.exports = () => ({
         INSTA: 'INSTA@http://localhost:8081/remoteEntry.js',
         ITERM: 'ITERM@http://localhost:1236/remoteEntry.js',
       },
-      shared: [{
-        react: {
-          requiredVersion: '^17.0.2',
-          singleton: true,
+      shared: [
+        {
+          react: {
+            requiredVersion: '^17.0.2',
+            singleton: true,
+          },
         },
-      }],
+      ],
     }),
   ],
 });

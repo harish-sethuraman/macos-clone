@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -45,10 +44,6 @@ const commonConfig = (env) => ({
     }),
     new MiniCssExtractPlugin({
       chunkFilename: 'styles.css',
-    }),
-    new HtmlWebPackPlugin({
-      title: 'Harish Kumar',
-      template: 'src/public/index.html',
     }),
     new webpack.DefinePlugin({ 'process.env': JSON.stringify(env.dev) }),
   ],
